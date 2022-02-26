@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "./styles.css";
-import receiptsArr from "./receiptData";
+import receiptsData from "./receiptData";
+import Form from "./components/Form";
+import Receipts from "./components/Receipts";
 
 export default function App() {
-  const [receipt, setReceipt] = useState(receiptsArr);
+  const [receipt, setReceipt] = useState(receiptsData);
   return (
     <div className="App">
       <h1>Korilla Receipts</h1>
-      <h2>Customer 1: {receipt[0].person}</h2>
+      <Form />
+      <Receipts receipts={receiptsData} />
     </div>
   );
 }

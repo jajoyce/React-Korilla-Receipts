@@ -1,2 +1,3 @@
 # React-Korilla-Receipts
-Created with CodeSandbox
+
+Created by JAJoyce with CodeSandbox
