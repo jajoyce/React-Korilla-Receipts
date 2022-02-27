@@ -40,14 +40,27 @@ const receipts = [
   },
   {
     id: 4,
-    person: "Karolin",
+    person: "Eric",
     order: {
-      main: "Salad Bowl",
-      protein: "Organic Tofu",
+      main: "Burrito",
+      protein: "Ginger Soy Chix",
       rice: "Purple Rice",
       sauce: "Green Crack",
       drink: "Korchata",
       cost: 30
+    },
+    paid: false
+  },
+  {
+    id: 5,
+    person: "Troy",
+    order: {
+      main: "Rice Bowl",
+      protein: "Grilled Steak",
+      rice: "Purple Rice",
+      sauce: "Korilla",
+      drink: "Korchata",
+      cost: 25
     },
     paid: false
   }

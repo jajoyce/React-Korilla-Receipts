@@ -1,10 +1,28 @@
 import React, { useState } from "react";
 
-function Form(props) {
+function Form({ search }) {
+  const [term, setTerm] = useState("");
+
+  const handleChange = (e) => {
+    setTerm(e.target.value);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    search(term);
+  };
+
   return (
-    <div>
-      <h3>Search Form goes here</h3>
-    </div>
+    <form onSubmit={handleSearch}>
+      <input
+        type="text"
+        onChange={handleChange}
+        value={term}
+        name="searchTerm"
+        placeholder="Search by Customer Name"
+      />
+      <input type="submit" value="Search" />
+    </form>
   );
 }
 
