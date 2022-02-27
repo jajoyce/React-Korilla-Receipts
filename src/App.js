@@ -10,7 +10,9 @@ export default function App() {
     <div className="App">
       <h1>Korilla Receipts</h1>
       <Form />
-      <Receipts receipts={receiptsData} />
+      <div className="receipts-container">
+        <Receipts receipts={receiptsData} />
+      </div>
     </div>
   );
 }
