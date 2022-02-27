@@ -27,3 +27,7 @@ input {
 input[type="text"] {
   min-width: 200px;
 }
+
+.click-paid {
+  cursor: pointer;
+}

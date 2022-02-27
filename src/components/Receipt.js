@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Receipt({ receipt, key }) {
+function Receipt({ receipt }) {
+  const [paid, setPaid] = useState(receipt.paid);
+
+  const handleClick = (e) => {
+    setPaid((prevPaid) => !prevPaid);
+  };
+
   return (
     <div className="receipt">
       <h2>{receipt.person}</h2>
@@ -9,8 +15,10 @@ function Receipt({ receipt, key }) {
       <h4>Rice: {receipt.order.rice}</h4>
       <h4>Sauce: {receipt.order.sauce}</h4>
       <h4>Drink: {receipt.order.drink}</h4>
-      <h4>Cost: {receipt.order.cost}</h4>
-      <h3>Paid: {receipt.paid.toString().toUpperCase()}</h3>
+      <h4>Cost: ${receipt.order.cost}</h4>
+      <h3 className="click-paid" onClick={handleClick}>
+        {paid ? "PAID" : "NOT PAID"}
+      </h3>
     </div>
   );
 }

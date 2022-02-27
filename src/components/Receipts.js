@@ -4,8 +4,8 @@ import Receipt from "./Receipt";
 function Receipts({ receipts }) {
   return (
     <div className="receipts-container">
-      {receipts.map((receipt) => (
-        <Receipt receipt={receipt} key={receipt.id} />
+      {receipts.map((receipt, index) => (
+        <Receipt receipt={receipt} key={index} />
       ))}
     </div>
   );
