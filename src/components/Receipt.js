@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Receipt({ receipt }) {
-  const [paid, setPaid] = useState(receipt.paid);
-
+function Receipt({ receipt, togglePaid }) {
   const handleClick = (e) => {
-    setPaid((prevPaid) => !prevPaid);
+    togglePaid(receipt.id);
   };
 
   return (
@@ -17,7 +15,7 @@ function Receipt({ receipt }) {
       <h4>Drink: {receipt.order.drink}</h4>
       <h4>Cost: ${receipt.order.cost}</h4>
       <h3 className="click-paid" onClick={handleClick}>
-        {paid ? "PAID" : "NOT PAID"}
+        {receipt.paid ? "PAID" : "NOT PAID"}
       </h3>
       <small>Order # {receipt.id}</small>
     </div>

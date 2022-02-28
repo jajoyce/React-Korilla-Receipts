@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Form({ search }) {
+function Form({ searchReceipts }) {
   const [term, setTerm] = useState("");
 
   const handleChange = (e) => {
@@ -9,7 +9,7 @@ function Form({ search }) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    search(term);
+    searchReceipts(term);
   };
 
   return (
