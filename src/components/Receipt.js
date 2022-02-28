@@ -7,17 +7,45 @@ function Receipt({ receipt, togglePaid }) {
 
   return (
     <div className="receipt">
-      <h2>{receipt.person}</h2>
-      <h3>{receipt.order.main}</h3>
-      <h4>Protein: {receipt.order.protein}</h4>
-      <h4>Rice: {receipt.order.rice}</h4>
-      <h4>Sauce: {receipt.order.sauce}</h4>
-      <h4>Drink: {receipt.order.drink}</h4>
-      <h4>Cost: ${receipt.order.cost}</h4>
-      <h3 className="click-paid" onClick={handleClick}>
-        {receipt.paid ? "PAID" : "NOT PAID"}
-      </h3>
-      <small>Order # {receipt.id}</small>
+      <div className="v-middle">
+        <h2>{receipt.person}</h2>
+        <h3>{receipt.order.main}</h3>
+        <small>Order # {receipt.id}</small>
+        <hr />
+        <h4>
+          <small>
+            <em>Protein:</em>
+          </small>{" "}
+          {receipt.order.protein}
+        </h4>
+        <h4>
+          <small>
+            <em>Rice:</em>
+          </small>{" "}
+          {receipt.order.rice ? receipt.order.rice : "None"}
+        </h4>
+        <h4>
+          <small>
+            <em>Sauce:</em>
+          </small>{" "}
+          {receipt.order.sauce ? receipt.order.sauce : "None"}
+        </h4>
+        <h4>
+          <small>
+            <em>Drink:</em>
+          </small>{" "}
+          {receipt.order.drink ? receipt.order.drink : "None"}
+        </h4>
+        <h4>
+          <small>
+            <em>Cost:</em>
+          </small>{" "}
+          ${receipt.order.cost}
+        </h4>
+        <button className="click-paid" onClick={handleClick}>
+          {receipt.paid ? "PAID" : "NOT PAID"}
+        </button>
+      </div>
     </div>
   );
 }

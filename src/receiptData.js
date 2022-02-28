@@ -31,9 +31,9 @@ const receipts = [
     order: {
       main: "Salad Bowl",
       protein: "Organic Tofu",
-      rice: "none",
+      rice: "None",
       sauce: "K'lla",
-      drink: "Sparkling Blood Orange Soda",
+      drink: "Blood Orange Soda",
       cost: 20
     },
     paid: false
