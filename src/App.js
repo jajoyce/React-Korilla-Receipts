@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./styles.css";
 import receiptsData from "./receiptData";
 import SearchForm from "./components/SearchForm";
@@ -11,15 +11,19 @@ export default function App() {
   const [receiptsRendered, setReceiptsRendered] = useState(receipts);
   const [renderCount, setRenderCount] = useState(0);
 
-  useEffect(() => {
-    setReceiptsRendered(receipts);
-  }, [receipts, renderCount]);
+  useLayoutEffect(() => {
+    setReceiptsRendered(() => receipts);
+  }, [receipts]);
+
+  useLayoutEffect(() => {
+    setReceiptsRendered((receiptsRendered) => receiptsRendered);
+  }, [renderCount]);
 
   const searchReceipts = (searchTerm) => {
     if (searchTerm === "") {
-      setReceiptsRendered(receipts);
+      setReceiptsRendered(() => receipts);
     } else {
-      setReceiptsRendered(
+      setReceiptsRendered(() =>
         receipts.filter((receipt) =>
           receipt.person.toLowerCase().includes(searchTerm.toLowerCase())
         )
@@ -30,8 +34,8 @@ export default function App() {
   const togglePaid = (receiptID) => {
     const index = receipts.findIndex((receipt) => receipt.id === receiptID);
     receipts[index].paid = !receipts[index].paid;
-    setReceipts(receipts);
-    setRenderCount(renderCount + 1);
+    setReceipts(() => receipts);
+    setRenderCount((renderCount) => renderCount + 1);
   };
 
   const addReceipt = (newReceipt) => {
@@ -41,16 +45,32 @@ export default function App() {
     setReceipts((receipts) => [...receipts, newReceiptAssigned]);
   };
 
-  const filterReceipts = (filter) => {
+  const filterSortReceipts = (filter) => {
     switch (filter) {
       case "all":
-        setReceiptsRendered(receipts);
+        setReceiptsRendered(() => receipts);
+        // setRenderCount((renderCount) => renderCount + 1);
         break;
       case "paid":
-        setReceiptsRendered(receipts.filter((receipt) => receipt.paid));
+        setReceiptsRendered(() => receipts.filter((receipt) => receipt.paid));
         break;
       case "unpaid":
-        setReceiptsRendered(receipts.filter((receipt) => !receipt.paid));
+        setReceiptsRendered(() => receipts.filter((receipt) => !receipt.paid));
+        break;
+      case "alphabet":
+        setReceiptsRendered((receiptsRendered) =>
+          receiptsRendered.sort((a, b) => {
+            let nameA = a.person.toUpperCase();
+            let nameB = b.person.toUpperCase();
+            if (nameA < nameB) {
+              return -1;
+            } else if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          })
+        );
+        setRenderCount((renderCount) => renderCount + 1);
         break;
       default:
         setReceiptsRendered(receipts);
@@ -61,7 +81,7 @@ export default function App() {
     <div className="App">
       <h1>Korilla Receipts</h1>
       <SearchForm searchReceipts={searchReceipts} />
-      <FilterButtons filterReceipts={filterReceipts} />
+      <FilterButtons filterSortReceipts={filterSortReceipts} />
       <div className="receipts-container">
         <Receipts receipts={receiptsRendered} togglePaid={togglePaid} />
         <NewReceiptForm addReceipt={addReceipt} />

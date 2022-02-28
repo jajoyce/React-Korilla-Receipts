@@ -1,13 +1,13 @@
 import React from "react";
 
-function FilterButtons({ filterReceipts }) {
+function FilterButtons({ filterSortReceipts }) {
   const handleClick = (e) => {
-    filterReceipts(e.target.id);
+    filterSortReceipts(e.target.id);
   };
 
   return (
     <div className="filter-buttons">
-      Filter Receipts: &nbsp;
+      Filter/Sort: &nbsp;
       <button id="paid" onClick={handleClick}>
         Paid
       </button>
@@ -16,6 +16,9 @@ function FilterButtons({ filterReceipts }) {
       </button>
       <button id="all" onClick={handleClick}>
         Show All
+      </button>
+      <button id="alphabet" onClick={handleClick}>
+        By Customer Name
       </button>
     </div>
   );
