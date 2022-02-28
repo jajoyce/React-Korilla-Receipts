@@ -36,6 +36,18 @@ function NewReceiptForm({ addReceipt }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     addReceipt(newReceipt);
+    setNewReceipt({
+      person: "",
+      order: {
+        main: "",
+        protein: "",
+        rice: "",
+        sauce: "",
+        drink: "",
+        cost: 0
+      },
+      paid: false
+    });
   };
 
   return (

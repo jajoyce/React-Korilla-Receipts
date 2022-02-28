@@ -19,6 +19,7 @@ function Receipt({ receipt }) {
       <h3 className="click-paid" onClick={handleClick}>
         {paid ? "PAID" : "NOT PAID"}
       </h3>
+      <small>Order # {receipt.id}</small>
     </div>
   );
 }

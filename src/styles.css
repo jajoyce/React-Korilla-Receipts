@@ -3,21 +3,6 @@
   text-align: center;
 }
 
-.receipts-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-top: 10px;
-}
-
-.receipt {
-  width: 25%;
-  max-width: 260px;
-  margin: 20px;
-  padding: 5px;
-  border: 2px solid #000;
-}
-
 .search-form input {
   font-size: 16px;
   padding: 10px;
@@ -32,13 +17,27 @@
   cursor: pointer;
 }
 
+.receipts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.receipt,
 .new-receipt-form {
-  width: 40%;
-  min-width: 0px;
-  max-width: 250px;
-  margin: 25px auto 50px;
-  padding: 15px;
   border: 2px solid #000;
+  width: 30%;
+  min-width: 260px;
+  max-width: 300px;
+  margin: 20px 10px;
+  padding: 16px;
+}
+
+.receipt {
+}
+
+.new-receipt-form {
 }
 
 .new-receipt-form form {
@@ -52,7 +51,7 @@
 
 .new-receipt-form input[type="text"],
 .new-receipt-form input[type="number"] {
-  min-width: 240px;
+  min-width: 95%;
 }
 
 .new-receipt-form input[type="submit"] {

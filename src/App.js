@@ -21,15 +21,20 @@ export default function App() {
   };
 
   const addReceipt = (newReceipt) => {
-    setReceipts((receipts) => [...receipts, newReceipt]);
+    const lastReceiptID = receipts[receipts.length - 1].id;
+    newReceipt.id = lastReceiptID + 1;
+    const newReceiptCopy = Object.assign({}, newReceipt);
+    setReceipts((receipts) => [...receipts, newReceiptCopy]);
   };
 
   return (
     <div className="App">
       <h1>Korilla Receipts</h1>
       <SearchForm search={searchReceipts} />
-      <Receipts receipts={receipts} />
-      <NewReceiptForm addReceipt={addReceipt} />
+      <div className="receipts-container">
+        <Receipts receipts={receipts} />
+        <NewReceiptForm addReceipt={addReceipt} />
+      </div>
     </div>
   );
 }
